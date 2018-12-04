@@ -1,6 +1,5 @@
 import json
-
-save_data = []
+names = []
 
 
 def get_user_names(path):
@@ -11,8 +10,12 @@ def get_user_names(path):
             question_replies = question_data['replies']
             for replies_data in question_replies:
                 user_name = replies_data['user']['display_name']
-                save_data.append(user_name)
+                names.append(user_name)
 
 
 get_user_names('./source-data.json')
-print(save_data)
+
+print(names)
+
+with open('user_names.json', 'w',) as file:
+    json.dump(names, file)
